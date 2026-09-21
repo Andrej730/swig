@@ -23,6 +23,12 @@
 #   This will check to make sure that the bison you have is at least version
 #   3.0.2 or greater.
 #
+#   The version extracted from "$BISON --version" may have any number of
+#   dot-separated components, for example both of these are handled:
+#
+#     bison (GNU Bison) 2.3
+#     bison (GNU Bison) 3.8.2
+#
 #   NOTE: This macro uses the $BISON variable to perform the check.
 #
 # LICENSE
@@ -49,7 +55,7 @@ AC_DEFUN([AX_PROG_BISON_VERSION],[
           | $SED -n -e '/bison (GNU Bison)/b inspect
 b
 : inspect
-s/.* (\{0,1\}\([0-9]*\.[0-9]*\.[0-9]*\))\{0,1\}.*/\1/;p'`
+s/.* (\{0,1\}\([0-9]\{1,\}\(\.[0-9]\{1,\}\)\{1,2\}\))\{0,1\}.*/\1/;p'`
         changequote([,])
         AC_MSG_RESULT($bison_version)
 
